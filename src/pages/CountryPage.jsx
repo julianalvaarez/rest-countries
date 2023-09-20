@@ -1,23 +1,15 @@
 import {AiOutlineArrowLeft} from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { getNativeName } from '../helpers/getNativeName';
 export const CountryPage = ({country}) => {
-// Supongamos que deseas acceder a la propiedad 'name' del objeto dentro de 'currencies'
-const primerObjetoCurrencies = country.currencies; // Accedes al objeto 'currencies'
+const {currencie, nativeName} = getNativeName(country.currencies, country.nativeName)
 
-// Luego, obtienes el primer valor (propiedad) del objeto 'currencies' (en este caso, 'egp')
-const primeraPropiedad = Object.keys(primerObjetoCurrencies)[0];
-
-// Finalmente, accedes a la propiedad 'name' del objeto dentro de 'currencies'
-const currencie = primerObjetoCurrencies[primeraPropiedad].name;
-
-// Supongamos que deseas acceder a la propiedad 'name' del objeto dentro de 'currencies'
-const primerObjetonativeName = country.nativeName; // Accedes al objeto 'nativeName'
-
-// Luego, obtienes el primer valor (propiedad) del objeto 'nativeName' (en este caso, 'egp')
-const primeraPropiedadNativeName = Object.keys(primerObjetonativeName)[0];
-
-// Finalmente, accedes a la propiedad 'name' del objeto dentro de 'nativeName'
-const nativeName = primerObjetonativeName[primeraPropiedadNativeName].common;
+function formatearNumero(numero) {
+  // Convertir el número a una cadena y dividirlo en grupos de 3 cifras desde la derecha
+  const numeroFormateado = numero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return numeroFormateado;
+}
+const population = formatearNumero(country.population)
 
   return (
     <main className='pb-8'>
@@ -34,7 +26,7 @@ const nativeName = primerObjetonativeName[primeraPropiedadNativeName].common;
                   <p className='text-slate-600 dark:text-slate-400'><span className="font-semibold text-black dark:text-darkText">Capital:</span> {country.capital.join(', ')}</p>
               </div>
               <div className='md:flex md:flex-col md:gap-8 md:text-md'>
-                  <p className='text-slate-600 dark:text-slate-400'><span className="font-semibold text-black dark:text-darkText">Population:</span> {country.population}</p>
+                  <p className='text-slate-600 dark:text-slate-400'><span className="font-semibold text-black dark:text-darkText">Population:</span> {population}</p>
                   <p className='text-slate-600 dark:text-slate-400'><span className="font-semibold text-black dark:text-darkText">State:</span> {country.isIndependent ? 'Independent' : 'Not Independent'}</p>
                   <p className='text-slate-600 dark:text-slate-400'><span className="font-semibold text-black dark:text-darkText">Currencies:</span> {currencie}</p>
               </div>
