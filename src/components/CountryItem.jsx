@@ -13,9 +13,9 @@ export const CountryItem = ({country}) => {
         <img src={country.flag} alt={country.name} className='w-72 h-44 rounded-t-md' />
         <div className="p-6 mb-5">
           <h4 className="text-lg font-bold mb-4">{country.name}</h4>
+          <p className="text-slate-900 dark:text-slate-400"><span className="font-semibold text-black dark:text-white">Capital:</span> {country.capital}</p>
           <p className="text-slate-900 dark:text-slate-400"><span className="font-semibold text-black dark:text-white">Population:</span> {population}</p>
           <p className="text-slate-900 dark:text-slate-400"><span className="font-semibold text-black dark:text-white">Region:</span> {country.region}</p>
-          <p className="text-slate-900 dark:text-slate-400"><span className="font-semibold text-black dark:text-white">Capital:</span> {country.capital}</p>
         </div>
       </div>   
     </Link>
