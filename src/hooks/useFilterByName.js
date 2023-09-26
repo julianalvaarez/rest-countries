@@ -7,7 +7,7 @@ export const useFilterByName = (inputValue = '', countries = []) => {
       if (inputValue.length === 0) {
         setResult(countries);
       } else {
-        setResult(countries.filter((country) => country.name.toLowerCase().includes(inputValue)));
+        setResult(countries.filter((country) => country.name.toLowerCase().includes(inputValue.toLowerCase())));
       }
     }, [countries, inputValue]);
 
